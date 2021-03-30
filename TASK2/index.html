@@ -1,8 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ADD,REMOVE PAGE</title>
+        <title>ADD & REMOVE PAGE</title>
         <style>
+            body{
+                text-align: center;
+                margin-top: 50px;
+            }
+
+            h2{
+                background-color: black;
+                color: blanchedalmond;
+            }
+
+            .container{
+                padding-top: 30px;
+                border: solid 1px black;
+            }
+
+            .button{
+                display: inline;
+                background-color:cornflowerblue;
+
+            }
+
+            .button:hover{
+                background-color: cornsilk;
+            }
+            
 
         </style>
 
@@ -16,11 +41,13 @@
     <body>
         <h2>ADD and REMOVE</h2>
         <div class= "container">
-            <div class = "field">
-                <input type = "text" id = "input" name = "input">   
-            </div><br>
+
+            <input type = "text" id = "input" name = "input" class = "field">   
             <button class = "button" onclick="ADD()">ADD</button>
-            <h3 id = "heading" ></h3>
+            <p id = "error"></p><br>
+            
+            <h3 id = "heading">DATA LIST</h3>
+            <ul id = "datas">No data</ul>
         </div>
     </body>
 </html>
