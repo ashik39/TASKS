@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Multi Step Form</title>
+        <!-- Required meta tags -->
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+        <style>
+            body{
+                margin-top: 50px;
+                margin-right: 100px;
+                margin-left: 100px;
+            }
+            h2{
+                text-align: center;
+                background-color: black;
+                color: blanchedalmond;
+            }
+
+            .container{
+                border : solid 2px black;
+                padding : 60px;
+            }
+
+            .right{
+                margin : 0px 0px 0px 885px; 
+            }
+
+            .rightcorner{
+                margin : 0px 0px 0px 850px;     
+            }   
+
+            .leftcorner{
+    
+                margin: 0px 0px 0px 0px;
+            }
+
+            .inline{
+                display: inline-flex;
+            }
+
+            p{
+                color:red;
+            }
+
+
+            .page02{
+                display: none;
+            }
+            .page03{
+                display: none;
+            }
+            .page04{
+                display: none;
+            }
+
+            
+
+
+        </style>
+
+    </head>
+    
+    <body onload="load()">
+    	<h2>MULTI STEP FORM</h2>
+        <div class="container">
+            
+            <div id="page1" class="page01">
+                
+                <div>
+                    <lable>Firstname : </lable>
+                    <input class="form-control" type= "text" id="firstname" name="firstname" placeholder="Firstname"><br>
+                        
+                </div>
+
+                <div>
+                    <lable>Lastname : </lable>
+                    <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Lastname"><br>
+                        
+                </div>
+                <br>
+                <button onclick= "next1()"  class="btn btn-primary right">Next</button>
+            </div><br>
+
+            <div id="page2" class = "page02">
+                
+                <div>
+                    <label>Email : </label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email"><br>
+                    
+                </div>
+
+                <div>
+                    <label>Phone : </label>
+                    <input class="form-control" type="number" id="phone" name="phone" placeholder="Phone"><br>
+                    
+                </div>
+                <br>
+                <div class="inline">
+                    <input class="btn btn-primary leftcorner" type="submit" onclick="prev1()"  value="Prev">
+                    <input class="btn btn-primary rightcorner" type="submit" onclick="next2()"  value="Next">
+                </div>
+            </div>
+
+            <div id="page3" class = "page03">
+                
+                <div>
+                    <label>Country : </label>
+                    <select id="country" class="form-select">
+                        <option value=''>Select Country</option>
+                        <option value="INDIA">INDIA</option>
+                        <option value="UK">UK</option>
+                        <option value="CHINA">CHINA</option>
+                        <option value="EUROPE">EUROPE</option>
+                    </select><br>
+                    
+                </div>
+                    <br>
+                <div>
+                    <label>State : </label>
+                    <select id="state" class="form-select">
+                        <option value=''>Select State</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Dheli">Dheli</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Rajastan">Rajastan</option>
+                    </select>
+                    
+                </div>
+
+                    <br><br>
+                <div>    
+                    <label>City : </label>
+                    <input class="form-control" type="text" id="city" name="city" placeholder="City"><br>
+                    
+                </div>
+                <br>
+                <div class="inline">
+                    <input  type="submit" onclick="prev2()" class="btn btn-primary leftcorner" value="Prev">
+                    <input type="submit" onclick="next3()" class="btn btn-primary rightcorner" value="Next">
+                </div>
+
+            </div>
+            
+            <div id="page4" class="page04">
+                <h2>DETAILS</h2>
+                <div id = "firstnameresult"></div>
+                <div id = "lastnameresult"></div>
+                <div id = "emailresult"></div>
+                <div id = "phoneresult"></div>
+                <div id = "countryresult"></div>
+                <div id = "stateresult"></div>
+                <div id = "cityresult"></div>
+                <input type="submit" onclick="prev3()" class="btn btn-primary leftcorner" value="Prev">
+            </div>
+
+        </div>
+
+
+        <script>
+            function load(){
+
+            const page1= document.getElementById('page1');
+            const page2= document.getElementById('page2');
+            const page3 = document.getElementById('page3');
+            const page4 = document.getElementById('page4');
+        }
+
+        // function error(i,message){
+        //     const errormessage = document.getElementsByClassName("errormsg");
+        //     errormessage[i].innerText = message;            
+
+        // }
+
+        function error(input,message){
+
+            var newnode = document.createElement("p");
+
+            var parentdiv = input.parentNode;
+
+            var empty = document.getElementById("msg");
+            var messageelement = parentdiv.insertBefore(newnode,empty);
+            console.log(messageelement);
+
+            messageelement.innerText = message;
+
+
+
+            // const formcontrol = input.parentElement;
+            // const small = formcontrol.querySelector('p');
+            // small.innerText = message;
+
+           // var child = input.parentElement;
+            //console.log(child);
+            //const errormessage = formcontrol.querySelectorAll('.errormsg');
+
+
+            //child.innerText = message;
+
+            //formcontrol.className = "form-control error";
+}
+
+        function success(input,message){
+
+            //var elementremove = document.getElementsById('msg');
+
+            
+            const parent = input.parentElement;
+            const ptag = parent.querySelectorAll('p');
+            if(ptag != null){
+                for(i=0;i<ptag.length;i++)
+                {
+                    ptag[i].innerText = message;
+                }
+            }
+            else{
+                return;
+            }
+            //input.removeChild(ptag);
+
+            // var child = input.parentElement;
+            // console.log(child);
+            //const errormessage = formcontrol.querySelectorAll('.errormsg');
+
+            //child.innerText = message;
+            // const errormessage = document.getElementsByClassName("errormsg");
+            // errormessage[i].innerText = message;            
+
+        }
+
+            
+
+            function next1(){
+                
+                const firstname = document.getElementById('firstname');
+                const lastname = document.getElementById('lastname');
+                const firstnamevalue = firstname.value;
+                const lastnamevalue = lastname.value;
+
+                if(firstnamevalue.trim() == ''){
+                    error(firstname,"*Enter your first name");
+                }
+                else{ 
+                    success(firstname,"");
+                }
+                
+                if(lastnamevalue.trim() == ''){
+                    error(lastname,"*Enter your last name");
+                }
+                else{
+                        success(lastname,"");
+                        page1.style.display = "none";
+                        page2.style.display = "block";
+                }
+            }        
+                    
+            function prev1(){
+                page1.style.display = "block";
+                page2.style.display = "none";
+            }
+
+            function next2(){
+                
+                const email = document.getElementById('email');
+                const phone = document.getElementById('phone');
+                const emailvalue = email.value;
+                const phonevalue = phone.value;
+
+                if(emailvalue.trim() == ''){
+                    error(email,"*Email can't be blank");
+                }
+                else{
+                    if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(emailvalue)){
+                        error(email,"*Enter proper mail : (Ex. abcd@mail.com)");
+                    }
+                    else{
+                        success(email,"");
+                    }
+                }
+
+                if(phonevalue.length != 10 || phonevalue.trim() == '') {                      
+                    error(phone,"*Enter 10 digit mobile number");
+                }
+                else{
+                    success(phone,"");
+                    page2.style.display = "none";
+                    page3.style.display = "block";
+                }   
+            }
+
+            function prev2(){
+                page3.style.display = "none";
+                page2.style.display = "block";
+            }
+
+            function next3(){
+                const country = document.getElementById('country');
+                const state = document.getElementById('state');
+                const city = document.getElementById('city');
+
+                if(country.value == ''){
+                    error(country,"*Choose Country");
+                }
+                else{
+                    success(country,"");
+                }
+
+                if(state.value == ''){
+                    error(state,"*Choose State");
+                }
+                else{
+                    success(state,"");
+                }      
+                        
+                if(city.value.trim() == ''){
+                    error(city,"*Enter city name");
+                }
+                else{
+                    success(city,"");
+                    page3.style.display = "none";  
+                    page4.style.display = "block";      
+                }
+            
+                
+
+
+                document.getElementById('firstnameresult').innerHTML ="<b>First Name :</b> " + firstname.value+"<br>"+"<br>";
+                document.getElementById('lastnameresult').innerHTML ="<b>Last Name  :</b> " + lastname.value+"<br>"+"<br>";
+                document.getElementById('emailresult').innerHTML ="<b>Email ID   :</b> " + email.value+"<br>"+"<br>";
+                document.getElementById('phoneresult').innerHTML ="<b>Phone      :</b> " + phone.value+"<br>"+"<br>";
+                document.getElementById('countryresult').innerHTML ="<b>Country    :</b> " + country.value+"<br>"+"<br>";
+                document.getElementById('stateresult').innerHTML ="<b>State      :</b> " + state.value+"<br>"+"<br>";
+                document.getElementById('cityresult').innerHTML ="<b>City      : </b>" + city.value+"<br>"+"<br>";
+            }
+            
+
+            function prev3(){
+                page4.style.display = "none";  
+                page3.style.display = "block";
+            }
+
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+
+    </body>
+</html>
