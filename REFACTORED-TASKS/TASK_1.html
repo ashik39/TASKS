@@ -72,14 +72,14 @@
             <div id="page1" class="page01">
                 
                 <div>
-                    <lable>Firstname : </lable>
-                    <input class="form-control" type= "text" id="firstname" name="firstname" placeholder="Firstname"><br>
+                    <lable>firstName : </lable>
+                    <input class="form-control" type= "text" id="firstName" name="firstName" placeholder="firstName"><br>
                         
                 </div>
 
                 <div>
-                    <lable>Lastname : </lable>
-                    <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Lastname"><br>
+                    <lable>lastName : </lable>
+                    <input class="form-control" type="text" id="lastName" name="lastName" placeholder="lastName"><br>
                         
                 </div>
                 <br>
@@ -148,8 +148,8 @@
             
             <div id="page4" class="page04">
                 <h2>DETAILS</h2>
-                <div id = "firstnameresult"></div>
-                <div id = "lastnameresult"></div>
+                <div id = "firstNameresult"></div>
+                <div id = "lastNameresult"></div>
                 <div id = "emailresult"></div>
                 <div id = "phoneresult"></div>
                 <div id = "countryresult"></div>
@@ -178,15 +178,15 @@
 
         function error(input,message){
 
-            var newnode = document.createElement("p");
+            var newNode = document.createElement("p");
 
             var parentdiv = input.parentNode;
 
             var empty = document.getElementById("msg");
-            var messageelement = parentdiv.insertBefore(newnode,empty);
-            console.log(messageelement);
+            var messageElement = parentdiv.insertBefore(newNode,empty);
+            console.log(messageElement);
 
-            messageelement.innerText = message;
+            messageElement.innerText = message;
 
 
 
@@ -236,23 +236,23 @@
 
             function next1(){
                 
-                const firstname = document.getElementById('firstname');
-                const lastname = document.getElementById('lastname');
-                const firstnamevalue = firstname.value;
-                const lastnamevalue = lastname.value;
+                const firstName = document.getElementById('firstName');
+                const lastName = document.getElementById('lastName');
+                const firstNameValue = firstName.value;
+                const lastNameValue = lastName.value;
 
-                if(firstnamevalue.trim() == ''){
-                    error(firstname,"*Enter your first name");
+                if(firstNameValue.trim() == ''){
+                    error(firstName,"*Enter your first name");
                 }
                 else{ 
-                    success(firstname,"");
+                    success(firstName,"");
                 }
                 
-                if(lastnamevalue.trim() == ''){
-                    error(lastname,"*Enter your last name");
+                if(lastNameValue.trim() == ''){
+                    error(lastName,"*Enter your last name");
                 }
                 else{
-                        success(lastname,"");
+                        success(lastName,"");
                         page1.style.display = "none";
                         page2.style.display = "block";
                 }
@@ -267,14 +267,14 @@
                 
                 const email = document.getElementById('email');
                 const phone = document.getElementById('phone');
-                const emailvalue = email.value;
-                const phonevalue = phone.value;
+                const emailValue = email.value;
+                const phoneValue = phone.value;
 
-                if(emailvalue.trim() == ''){
+                if(emailValue.trim() == ''){
                     error(email,"*Email can't be blank");
                 }
                 else{
-                    if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(emailvalue)){
+                    if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(emailValue)){
                         error(email,"*Enter proper mail : (Ex. abcd@mail.com)");
                     }
                     else{
@@ -282,7 +282,7 @@
                     }
                 }
 
-                if(phonevalue.length != 10 || phonevalue.trim() == '') {                      
+                if(phoneValue.length != 10 || phoneValue.trim() == '') {                      
                     error(phone,"*Enter 10 digit mobile number");
                 }
                 else{
@@ -328,8 +328,8 @@
                 
 
 
-                document.getElementById('firstnameresult').innerHTML ="<b>First Name :</b> " + firstname.value+"<br>"+"<br>";
-                document.getElementById('lastnameresult').innerHTML ="<b>Last Name  :</b> " + lastname.value+"<br>"+"<br>";
+                document.getElementById('firstNameresult').innerHTML ="<b>First Name :</b> " + firstName.value+"<br>"+"<br>";
+                document.getElementById('lastNameresult').innerHTML ="<b>Last Name  :</b> " + lastName.value+"<br>"+"<br>";
                 document.getElementById('emailresult').innerHTML ="<b>Email ID   :</b> " + email.value+"<br>"+"<br>";
                 document.getElementById('phoneresult').innerHTML ="<b>Phone      :</b> " + phone.value+"<br>"+"<br>";
                 document.getElementById('countryresult').innerHTML ="<b>Country    :</b> " + country.value+"<br>"+"<br>";
